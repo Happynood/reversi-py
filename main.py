@@ -69,3 +69,29 @@ def make_move(board, player, move):
                         break
                     board[nx][ny] = player
                 break
+
+def get_score(board):
+    black_score = 0
+    white_score = 0
+    for x in range(BOARD_SIZE):
+        for y in range(BOARD_SIZE):
+            if board[x][y] == 1:
+                black_score += 1
+            elif board[x][y] == 2:
+                white_score += 1
+    return black_score, white_score
+
+def ai_move(board, player):
+    valid_moves = get_valid_moves(board, player)
+    if not valid_moves:
+        return None
+    best_move = None
+    best_score = -1
+    for move in valid_moves:
+        new_board = copy.deepcopy(board)
+        make_move(new_board, player, move)
+        score = get_score(new_board)[player - 1]
+        if score > best_score:
+            best_move = move
+            best_score = score
+    return best_move
