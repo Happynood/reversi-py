@@ -95,3 +95,76 @@ def ai_move(board, player):
             best_move = move
             best_score = score
     return best_move
+
+# Define main function
+def main():
+    # Initialize game state
+    board = [[0] * BOARD_SIZE for _ in range(BOARD_SIZE)]
+    board[3][3] = board[4][4] = 1
+    board[3][4] = board[4][3] = 2
+    player = 1
+    game_over = False
+
+    # Game loop
+    while not game_over:
+        # Handle events
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                sys.exit()
+            if event.type == pygame.MOUSEBUTTONDOWN and player == 1:
+                x, y = event.pos[0] // SQUARE_SIZE, event.pos[1] // SQUARE_SIZE
+                if (x, y) in get_valid_moves(board, player):
+                    make_move(board, player, (x, y))
+                    player = 3 - player
+            if player == 2:
+                move = ai_move(board, player)
+                if move is not None:
+                    make_move(board, player, move)
+                    player = 3 - player
+
+        # Draw board
+        draw_board(board)
+
+        # Draw valid moves
+        for move in get_valid_moves(board, player):
+            rect = pygame.Rect(move[0] * SQUARE_SIZE, move[1] * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE)
+            pygame.draw.rect(screen, BLUE, rect, 3)
+
+        # Draw scores
+        black_score, white_score = get_score(board)
+        font = pygame.font.SysFont(None, 30)
+        black_text = font.render("Black: {}".format(black_score), True, BLACK)
+        white_text = font.render("White: {}".format(white_score), True, WHITE)
+        screen.blit(black_text, (10, BOARD_SIZE * SQUARE_SIZE - 40))
+        screen.blit(white_text, (BOARD_SIZE * SQUARE_SIZE - 110, BOARD_SIZE * SQUARE_SIZE - 40))
+
+        # Update screen
+        pygame.display.flip()
+
+        # Check for game over
+        if not get_valid_moves(board, player):
+            player = 3 - player
+            if not get_valid_moves(board, player):
+                game_over = True
+
+    # Draw game over screen
+    draw_board(board)
+    font = pygame.font.SysFont(None, 50)
+    if black_score > white_score:
+        text = font.render("Black wins!", True, BLACK)
+    elif white_score > black_score:
+        text = font.render("White wins!", True, WHITE)
+    else:
+        text = font.render("Tie game!", True, YELLOW)
+    screen.blit(text, (WINDOW_SIZE[0] // 2 - text.get_width() // 2, WINDOW_SIZE[1] // 2 - text.get_height() // 2))
+    pygame.display.flip()
+
+    # Wait for user to close window
+    while True:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                sys.exit()
+
+# Run main function
+if __name__ == "__main__":
+    main()
