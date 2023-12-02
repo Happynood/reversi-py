@@ -2,7 +2,7 @@ import pygame
 import sys
 import random
 import copy
-import menu
+
 # Define constants
 BOARD_SIZE = 8
 SQUARE_SIZE = 100
@@ -98,6 +98,7 @@ def ai_move(board, player):
 
 # Define main function
 def main():
+
     # Initialize game state
     board = [[0] * BOARD_SIZE for _ in range(BOARD_SIZE)]
     board[3][3] = board[4][4] = 1

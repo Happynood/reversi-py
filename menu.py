@@ -1,36 +1,50 @@
 import pygame
+import pygame_widgets
+from pygame_widgets.button import Button
 from pygame.locals import *
+import main
 WIDTH = 800
-HEIGHT = 600
+HEIGHT = 800
 BACKGROUND_COLOR = (0, 0, 0)
+
 pygame.init()
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Reversi Menu")
-font = pygame.font.SysFont("Arial", 50)
-running = True
-while running:
-# Handle Events
-    for event in pygame.event.get():
-        if event.type == QUIT:
-            running = False
-        if event.type == KEYDOWN:
-            if event.key == K_ESCAPE:
+
+font = pygame.font.SysFont("Arial", 70)
+
+button = Button(
+            # Mandatory Parameters
+            screen,  # Surface to place button on
+            WIDTH //2 -75,  # X-coordinate of top left corner
+            HEIGHT//2-75,  # Y-coordinate of top left corner
+            150,  # Width
+            100,  # Text to display
+            fontSize=30,  # Size of font
+            margin=20,  # Minimum distance between text/image and edge of button
+            inactiveColour=(255, 255, 255),  # Colour of button when not being interacted with
+            text = 'Start Game',
+            pressedColour=(100, 100, 100),  # Colour of button when being clicked
+            radius=20,  # Radius of border corners (leave empty for not curved)
+            onClick=lambda: main.main()  # Function to call when clicked on
+        )
+
+title_text = font.render("Reversi Menu", True, (255, 255, 255))
+screen.blit(title_text, (WIDTH / 2 - title_text.get_width() / 2, HEIGHT / 4))
+def draw_menu():
+    running = True
+    while running:
+        # Handle Events
+        events = pygame.event.get()
+        for event in pygame.event.get():
+            if event.type == QUIT:
                 running = False
-    # Fill Background
-    screen.fill(BACKGROUND_COLOR)
+            if event.type == KEYDOWN:
+                if event.key == K_ESCAPE:
+                    running = False
+        # Fill Background
+        pygame_widgets.update(events)  # Call once every loop to allow widgets to render and listen
+        pygame.display.update()
 
-    # Render Menu
-    title_text = font.render("Reversi Menu", True, (255, 255, 255))
-    screen.blit(title_text, (WIDTH/2 - title_text.get_width()/2, HEIGHT/4))
 
-    option1_text = font.render("1. Start Game", True, (255, 255, 255))
-    screen.blit(option1_text, (WIDTH/2 - option1_text.get_width()/2, HEIGHT/2))
-
-    option2_text = font.render("2. Instructions", True, (255, 255, 255))
-    screen.blit(option2_text, (WIDTH/2 - option2_text.get_width()/2, HEIGHT/2 + 60))
-
-    option3_text = font.render("3. Quit", True, (255, 255, 255))
-    screen.blit(option3_text, (WIDTH/2 - option3_text.get_width()/2, HEIGHT/2 + 120))
-
-    pygame.display.flip()
-pygame.quit()
+draw_menu()
