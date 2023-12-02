@@ -28,7 +28,7 @@ btn1 = Button(
     text='Start Game',
     pressedColour=(140, 71, 67),  # Colour of button when being clicked
     radius=20,  # Radius of border corners (leave empty for not curved)
-    onClick=lambda: main.main()  # Function to call when clicked on
+    onClick=lambda: start()  # Function to call when clicked on
 )
 
 btn2= Button(
@@ -76,6 +76,27 @@ dropdown2 = Dropdown(
     fontSize=30,
     font = pygame.font.SysFont("Arial", 30)
 )
+
+dropdown3 = Dropdown(
+    screen, WIDTH // 2 +-75, HEIGHT // 2 , 150, 50, name='Choose board',
+    choices=[
+        '8',
+        '10'
+    ],
+    borderRadius=20,
+    colour=pygame.Color((144, 77, 48)),
+    values=[True,False],
+    direction='down',
+    textHAlign='centre',
+    fontSize=30,
+    font = pygame.font.SysFont("Arial", 25)
+)
+
+def start():
+    a = dropdown1.getSelected()
+    b = dropdown2.getSelected()
+    c = dropdown3.getSelected()
+    main.main(a,b,c)
 
 title_text = font.render("Reversi Menu", True, (255, 255, 255))
 screen.blit(title_text, (WIDTH / 2 - title_text.get_width() / 2, HEIGHT / 4-100))

@@ -21,20 +21,26 @@ pygame.display.set_caption("Reversi")
 screen.blit(pygame.image.load("./img/game1.png"), (0, 0))
 
 # Define helper functions
-def draw_board(board):
+def draw_board(board,p2):
     screen.blit(pygame.image.load("./img/game.png"), (0, 0))
     for x in range(BOARD_SIZE):
         for y in range(BOARD_SIZE):
             rect = pygame.Rect(x * SQUARE_SIZE, y * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE)
 
-            #pygame.draw.rect(screen, GREEN, rect)
             if board[x][y] == 1:
-                wh = pygame.image.load("./img/black.png")
-                screen.blit(wh,(rect.center[0]-50,rect.center[1]-50))
-
+                if p2==0:
+                    wh = pygame.image.load("./img/black.png")
+                    screen.blit(wh,(rect.center[0]-50,rect.center[1]-50))
+                else:
+                    wh = pygame.image.load("./img/white.png")
+                    screen.blit(wh, (rect.center[0] - 50, rect.center[1] - 50))
             elif board[x][y] == 2:
-                wh = pygame.image.load("./img/white.png")
-                screen.blit(wh, (rect.center[0] - 50, rect.center[1] - 50))
+                if p2==0:
+                    wh = pygame.image.load("./img/white.png")
+                    screen.blit(wh, (rect.center[0] - 50, rect.center[1] - 50))
+                else:
+                    wh = pygame.image.load("./img/black.png")
+                    screen.blit(wh, (rect.center[0] - 50, rect.center[1] - 50))
 
 
 def get_valid_moves(board, player):
@@ -104,7 +110,7 @@ def ai_move(board, player):
     return best_move
 
 # Define main function
-def main():
+def main(p1,p2,p3):
 
     # Initialize game state
     board = [[0] * BOARD_SIZE for _ in range(BOARD_SIZE)]
@@ -131,7 +137,7 @@ def main():
                     player = 3 - player
 
         # Draw board
-        draw_board(board)
+        draw_board(board,p2)
 
         # Draw valid moves
         for move in get_valid_moves(board, player):
@@ -156,7 +162,7 @@ def main():
                 game_over = True
 
     # Draw game over screen
-    draw_board(board)
+    draw_board(board,p2)
     font = pygame.font.SysFont(None, 50)
     if black_score > white_score:
         text = font.render("Black wins!", True, BLACK)
