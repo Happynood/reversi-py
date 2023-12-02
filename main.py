@@ -2,10 +2,10 @@ import pygame
 import sys
 import random
 import copy
-
+import menu
 # Define constants
 BOARD_SIZE = 8
-SQUARE_SIZE = 50
+SQUARE_SIZE = 100
 WINDOW_SIZE = (BOARD_SIZE * SQUARE_SIZE, BOARD_SIZE * SQUARE_SIZE)
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
