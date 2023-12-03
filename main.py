@@ -56,7 +56,7 @@ def draw_board(board,p2,p3):
                 if p2==1:
                     wh = pygame.image.load("./img/white"+s+".png")
                     screen.blit(wh, (rect.center[0] - pr_x, rect.center[1] - pr_y))
-                if p2==0:
+                else:
                     wh = pygame.image.load("./img/black"+s+".png")
                     screen.blit(wh, (rect.center[0] - pr_x, rect.center[1] - pr_y))
             elif board[x][y] == 3:
