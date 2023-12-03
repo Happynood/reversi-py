@@ -46,17 +46,17 @@ def draw_board(board,p2,p3):
                 s = '8'
                 pr_x, pr_y = 40, 40
             if board[x][y] == 1:
-                if p3==1:
+                if p2==1:
                     wh = pygame.image.load("./img/black"+s+".png")
                     screen.blit(wh,(rect.center[0]-pr_x,rect.center[1]-pr_y))
                 else:
                     wh = pygame.image.load("./img/white"+s+".png")
                     screen.blit(wh, (rect.center[0] - pr_x, rect.center[1] - pr_y))
             elif board[x][y] == 2:
-                if p3==1:
+                if p2==1:
                     wh = pygame.image.load("./img/white"+s+".png")
                     screen.blit(wh, (rect.center[0] - pr_x, rect.center[1] - pr_y))
-                else:
+                if p2==0:
                     wh = pygame.image.load("./img/black"+s+".png")
                     screen.blit(wh, (rect.center[0] - pr_x, rect.center[1] - pr_y))
             elif board[x][y] == 3:
