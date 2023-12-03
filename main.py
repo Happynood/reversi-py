@@ -236,8 +236,8 @@ def main(p1,p2,p3,p4,p5,name1,name2):
                 black_text = font.render("Black: {}".format(black_score), True, WHITE)
                 white_text = font.render("White: {}".format(white_score), True, WHITE)
             else:
-                black_text = font.render("White: {}".format(black_score), True, WHITE)
-                white_text = font.render("Black: {}".format(white_score), True, WHITE)
+                black_text = font.render("Black: {}".format(black_score), True, WHITE)
+                white_text = font.render("White: {}".format(white_score), True, WHITE)
 
             screen.blit(black_text, (10, BOARD_SIZE * SQUARE_SIZE - 40))
             screen.blit(white_text, (BOARD_SIZE * SQUARE_SIZE - 110, BOARD_SIZE * SQUARE_SIZE - 40))
@@ -326,6 +326,7 @@ def main(p1,p2,p3,p4,p5,name1,name2):
             else:
                 black_text = font.render("White: {}".format(black_score), True, WHITE)
                 white_text = font.render("Black: {}".format(white_score), True, WHITE)
+
             screen.blit(black_text, (10, BOARD_SIZE * SQUARE_SIZE - 40))
             screen.blit(white_text, (BOARD_SIZE * SQUARE_SIZE - 110, BOARD_SIZE * SQUARE_SIZE - 40))
 

@@ -156,7 +156,7 @@ def draw_menu():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 run = False
-                quit()
+                sys.exit()
 
         screen.fill((0, 0, 0), pygame.Rect(0, 400, 800, 800))
         screen.blit(pygame.image.load("./img/menu2.png"), (0, 0))
