@@ -50,7 +50,7 @@ font = pygame.font.SysFont("Unispace", 30)
 )
 
 dropdown1 = Dropdown(
-    screen, WIDTH // 2 -250, HEIGHT // 2 , 150, 100, name='Select mode',
+    screen, WIDTH // 2 -250, HEIGHT // 2 - 150, 150, 100, name='Select mode',
     choices=[
         'Reversi',
         'Antireversi'
@@ -65,7 +65,7 @@ dropdown1 = Dropdown(
 )
 
 dropdown2 = Dropdown(
-    screen, WIDTH // 2 +100, HEIGHT // 2 , 150, 100, name='Select color',
+    screen, WIDTH // 2 +100, HEIGHT // 2 - 150 , 150, 100, name='Select color',
     choices=[
         'Black',
         'White'
@@ -94,11 +94,43 @@ dropdown3 = Dropdown(
     font = pygame.font.SysFont("Unispace", 25)
 )
 
+dropdown4 = Dropdown(
+    screen, WIDTH // 2 +100, HEIGHT // 2 , 150, 50, name='Choose players',
+    choices=[
+        '1',
+        '2'
+    ],
+    borderRadius=20,
+    colour=pygame.Color((144, 77, 48)),
+    values=[True,False],
+    direction='down',
+    textHAlign='centre',
+    fontSize=30,
+    font = pygame.font.SysFont("Unispace", 25)
+)
+
+dropdown5 = Dropdown(
+    screen, WIDTH // 2 -250, HEIGHT // 2 , 150, 50, name='Black holes',
+    choices=[
+        'Yes',
+        'No'
+    ],
+    borderRadius=20,
+    colour=pygame.Color((144, 77, 48)),
+    values=[True,False],
+    direction='down',
+    textHAlign='centre',
+    fontSize=30,
+    font = pygame.font.SysFont("Unispace", 25)
+)
+
 def start():
     a = dropdown1.getSelected()
     b = dropdown2.getSelected()
     c = dropdown3.getSelected()
-    main.main(a,b,c)
+    d = dropdown4.getSelected()
+    e = dropdown5.getSelected()
+    main.main(a,b,c,d,e)
 
 title_text = font.render("Reversi Menu", True, (255, 255, 255))
 screen.blit(title_text, (WIDTH / 2 - title_text.get_width() / 2, HEIGHT / 4-100))

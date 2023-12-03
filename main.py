@@ -58,6 +58,14 @@ def draw_board(board,p2,p3):
                 else:
                     wh = pygame.image.load("./img/black"+s+".png")
                     screen.blit(wh, (rect.center[0] - pr_x, rect.center[1] - pr_y))
+            elif board[x][y] == 3:
+                if p2==1:
+                    wh = pygame.image.load("./img/bh"+s+".png")
+                    screen.blit(wh, (rect.center[0]+100 , rect.center[1]+100))
+                else:
+                    wh = pygame.image.load("./img/bh"+s+".png")
+                    screen.blit(wh, (rect.center[0] -45, rect.center[1] -45))
+
 
 
 def get_valid_moves(board, player,p3):
@@ -146,7 +154,7 @@ def ai_move(board, player,p1,p3):
     return best_move
 
 # Define main function
-def main(p1,p2,p3):
+def main(p1,p2,p3,p4,p5):
     if p3==1:
         SQUARE_SIZE = 100
         # Define constants
@@ -155,6 +163,12 @@ def main(p1,p2,p3):
         SQUARE_SIZE = 80
         # Define constants
         BOARD_SIZE = 10
+
+    black_holes_coord = []
+    if p5==1:
+        for x in range(random.randint(1,BOARD_SIZE-1)):
+            black_holes_coord.append((random.randint(0,BOARD_SIZE-1),random.randint(0,BOARD_SIZE-1)))
+        black_holes_coord.append((5,6))
     WINDOW_SIZE = (BOARD_SIZE * SQUARE_SIZE, BOARD_SIZE * SQUARE_SIZE)
     BLACK = (0, 0, 0)
     WHITE = (255, 255, 255)
@@ -172,6 +186,8 @@ def main(p1,p2,p3):
     board = [[0] * BOARD_SIZE for _ in range(BOARD_SIZE)]
     board[len(board)//2-1][len(board)//2-1] = board[len(board)//2][len(board)//2] = 1
     board[len(board)//2-1][len(board)//2] = board[len(board)//2][len(board)//2-1] = 2
+    for x in range(len(black_holes_coord)):
+        board[black_holes_coord[x][0]][black_holes_coord[x][1]] = 3
     player = 1
     game_over = False
 
