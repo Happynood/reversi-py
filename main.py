@@ -203,10 +203,11 @@ def main(p1,p2,p3,p4,p5,name1,name2):
     # Game loop
     if p4==0 or p4==None:
         while not game_over:
+
             # Handle events
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
-                    sys.exit()
+                    return 1
                 if event.type == pygame.MOUSEBUTTONDOWN and player == 1:
                     x, y = event.pos[0] // SQUARE_SIZE, event.pos[1] // SQUARE_SIZE
                     if (x, y) in get_valid_moves(board, player,p3):
@@ -237,8 +238,20 @@ def main(p1,p2,p3,p4,p5,name1,name2):
             else:
                 black_text = font.render("White: {}".format(black_score), True, WHITE)
                 white_text = font.render("Black: {}".format(white_score), True, WHITE)
+
             screen.blit(black_text, (10, BOARD_SIZE * SQUARE_SIZE - 40))
             screen.blit(white_text, (BOARD_SIZE * SQUARE_SIZE - 110, BOARD_SIZE * SQUARE_SIZE - 40))
+
+            clock = pygame.time.Clock()
+
+            ticks = pygame.time.get_ticks()
+            millis = ticks % 1000
+            seconds = int(ticks / 1000 % 60)
+            minutes = int(ticks / 60000 % 24)
+
+            out = '{minutes:02d}:{seconds:02d}:{millis}'.format(minutes=minutes, millis=millis, seconds=seconds)
+            timer = font.render("Time: "+out, True, WHITE)
+            screen.blit(timer, (10, 10))
 
             # Update screen
             pygame.display.flip()
@@ -305,7 +318,7 @@ def main(p1,p2,p3,p4,p5,name1,name2):
                 pygame.draw.rect(screen, BLUE, rect, 3)
 
             # Draw scores
-            black_score, white_score = get_score(board)
+            black_score, white_score = get_score(board,p2)
             font = pygame.font.SysFont(None, 30)
             if p2==1:
                 black_text = font.render("Black: {}".format(black_score), True, WHITE)
@@ -316,6 +329,16 @@ def main(p1,p2,p3,p4,p5,name1,name2):
             screen.blit(black_text, (10, BOARD_SIZE * SQUARE_SIZE - 40))
             screen.blit(white_text, (BOARD_SIZE * SQUARE_SIZE - 110, BOARD_SIZE * SQUARE_SIZE - 40))
 
+            clock = pygame.time.Clock()
+
+            ticks = pygame.time.get_ticks()
+            millis = ticks % 1000
+            seconds = int(ticks / 1000 % 60)
+            minutes = int(ticks / 60000 % 24)
+
+            out = '{minutes:02d}:{seconds:02d}:{millis}'.format(minutes=minutes, millis=millis, seconds=seconds)
+            timer = font.render("Time: " + out, True, WHITE)
+            screen.blit(timer, (10, 10))
             # Update screen
             pygame.display.flip()
 
