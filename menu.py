@@ -130,7 +130,11 @@ def start():
     c = dropdown3.getSelected()
     d = dropdown4.getSelected()
     e = dropdown5.getSelected()
-    main.main(a,b,c,d,e)
+    rest = main.main(a,b,c,d,e)
+    if rest==1:
+        draw_menu()
+    else:
+        sys.exit()
 
 title_text = font.render("Reversi Menu", True, (255, 255, 255))
 screen.blit(title_text, (WIDTH / 2 - title_text.get_width() / 2, HEIGHT / 4-100))
@@ -139,7 +143,6 @@ screen.blit(title_text, (WIDTH / 2 - title_text.get_width() / 2, HEIGHT / 4-100)
 def draw_menu():
     run = True
     while run:
-
         events = pygame.event.get()
         for event in events:
             if event.type == pygame.QUIT:

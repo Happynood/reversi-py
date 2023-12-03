@@ -2,7 +2,8 @@ import pygame
 import sys
 import random
 import copy
-
+from pygame_widgets.button import Button
+import pygame_widgets
 SQUARE_SIZE = 100
 # Define constants
 BOARD_SIZE = 8
@@ -117,7 +118,7 @@ def make_move(board, player, move):
                     board[nx][ny] = player
                 break
 
-def get_score(board):
+def get_score(board,p2):
     black_score = 0
     white_score = 0
     for x in range(BOARD_SIZE):
@@ -126,9 +127,12 @@ def get_score(board):
                 black_score += 1
             elif board[x][y] == 2:
                 white_score += 1
-    return black_score, white_score
+    if p2==1:
+        return black_score, white_score
+    return white_score, black_score
 
-def ai_move(board, player,p1,p3):
+
+def ai_move(board, player,p1,p2,p3):
     valid_moves = get_valid_moves(board, player,p3)
     if not valid_moves:
         return None
@@ -148,7 +152,7 @@ def ai_move(board, player,p1,p3):
         for move in valid_moves:
             new_board = copy.deepcopy(board)
             make_move(new_board, player, move)
-            score = get_score(new_board)[player - 1]
+            score = get_score(new_board,p2)[player - 1]
             if score < best_score:
                 best_move = move
                 best_score = score
@@ -209,7 +213,7 @@ def main(p1,p2,p3,p4,p5):
                         make_move(board, player, (x, y))
                         player = 3 - player
                 if player == 2:
-                    move = ai_move(board, player,p1,p3)
+                    move = ai_move(board, player,p1,p2,p3)
                     if move is not None:
                         make_move(board, player, move)
                         player = 3 - player
@@ -225,7 +229,7 @@ def main(p1,p2,p3,p4,p5):
                 pygame.draw.rect(screen, BLUE, rect, 3)
 
             # Draw scores
-            black_score, white_score = get_score(board)
+            black_score, white_score = get_score(board,p2)
             font = pygame.font.SysFont(None, 30)
             if p2==1:
                 black_text = font.render("Black: {}".format(black_score), True, WHITE)
@@ -248,13 +252,13 @@ def main(p1,p2,p3,p4,p5):
         # Draw game over screen
         draw_board(board,p2,p3)
         font = pygame.font.SysFont(None, 50)
-        if black_score > white_score and (p2==1 or p2==None):
-            text = font.render("Black wins!", True, BLACK)
         if black_score < white_score and (p2==1 or p2==None):
-            text = font.render("White wins!", True, BLACK)
-        if black_score < white_score and p2==0:
             text = font.render("Black wins!", True, BLACK)
+        if black_score > white_score and (p2==1 or p2==None):
+            text = font.render("White wins!", True, BLACK)
         if black_score > white_score and p2==0:
+            text = font.render("Black wins!", True, BLACK)
+        if black_score < white_score and p2==0:
             text = font.render("White wins!", True, BLACK)
         if(black_score==white_score):
             text = font.render("Tie game!", True, BLACK)
@@ -262,8 +266,12 @@ def main(p1,p2,p3,p4,p5):
         screen.blit(text, (WINDOW_SIZE[0] // 2 - text.get_width() // 2, WINDOW_SIZE[1] // 2 - text.get_height() // 2))
         pygame.display.flip()
 
-        # Wait for user to close window
         while True:
+            text1 = font.render("Turn to menu by 5 seconds", True, BLACK)
+            screen.blit(text1,(WINDOW_SIZE[0] // 2 - text.get_width() // 2-130, WINDOW_SIZE[1] // 2 - text.get_height() // 2-200))
+            pygame.display.flip()
+            pygame.time.delay(5000)
+            return True
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     sys.exit()
@@ -336,6 +344,12 @@ def main(p1,p2,p3,p4,p5):
 
         # Wait for user to close window
         while True:
+            text1 = font.render("Turn to menu by 5 seconds", True, BLACK)
+            screen.blit(text1, (
+            WINDOW_SIZE[0] // 2 - text.get_width() // 2 - 130, WINDOW_SIZE[1] // 2 - text.get_height() // 2 - 200))
+            pygame.display.flip()
+            pygame.time.delay(1000)
+            return True
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     sys.exit()
