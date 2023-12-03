@@ -102,7 +102,7 @@ dropdown4 = Dropdown(
     ],
     borderRadius=20,
     colour=pygame.Color((144, 77, 48)),
-    values=[True,False],
+    values=[False,True],
     direction='down',
     textHAlign='centre',
     fontSize=30,
