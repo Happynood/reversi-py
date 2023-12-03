@@ -1,6 +1,7 @@
 import pygame
 import pygame_widgets
 from pygame_widgets.button import Button
+from pygame_widgets.textbox import TextBox
 from pygame.locals import *
 import sys
 import main
@@ -123,6 +124,13 @@ dropdown5 = Dropdown(
     fontSize=30,
     font = pygame.font.SysFont("Unispace", 25)
 )
+textbox_name1 = TextBox(screen, WIDTH // 2 -250, HEIGHT // 2 +100, 150, 50, fontSize=30,
+                  borderColour=(144, 77, 48), textColour=(0, 0, 0),
+                  radius=20, borderThickness=5)
+textbox_name2 = TextBox(screen, WIDTH // 2 +100, HEIGHT // 2 +100, 150, 50, fontSize=30,
+                  borderColour=(144, 77, 48), textColour=(0, 0, 0),
+                  radius=20, borderThickness=5)
+
 
 def start():
     a = dropdown1.getSelected()
@@ -130,19 +138,19 @@ def start():
     c = dropdown3.getSelected()
     d = dropdown4.getSelected()
     e = dropdown5.getSelected()
-    rest = main.main(a,b,c,d,e)
+    name1 = textbox_name1.getText()
+    name2 = textbox_name2.getText()
+    rest = main.main(a,b,c,d,e,name1,name2)
     if rest==1:
         draw_menu()
     else:
         sys.exit()
 
-title_text = font.render("Reversi Menu", True, (255, 255, 255))
-screen.blit(title_text, (WIDTH / 2 - title_text.get_width() / 2, HEIGHT / 4-100))
-
 
 def draw_menu():
     run = True
     while run:
+
         events = pygame.event.get()
         for event in events:
             if event.type == pygame.QUIT:
@@ -154,5 +162,6 @@ def draw_menu():
         screen.blit(pygame.image.load("./img/menu2.png"), (0, 0))
         pygame_widgets.update(events)
         pygame.display.update()
+        pygame.display.flip()
 
 draw_menu()

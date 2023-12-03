@@ -159,7 +159,7 @@ def ai_move(board, player,p1,p2,p3):
     return best_move
 
 # Define main function
-def main(p1,p2,p3,p4,p5):
+def main(p1,p2,p3,p4,p5,name1,name2):
     if p3==1:
         SQUARE_SIZE = 100
         # Define constants
