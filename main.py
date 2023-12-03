@@ -45,23 +45,23 @@ def draw_board(board,p2,p3):
                 s = '8'
                 pr_x, pr_y = 40, 40
             if board[x][y] == 1:
-                if p2==1:
+                if p3==1:
                     wh = pygame.image.load("./img/black"+s+".png")
                     screen.blit(wh,(rect.center[0]-pr_x,rect.center[1]-pr_y))
                 else:
                     wh = pygame.image.load("./img/white"+s+".png")
                     screen.blit(wh, (rect.center[0] - pr_x, rect.center[1] - pr_y))
             elif board[x][y] == 2:
-                if p2==1:
+                if p3==1:
                     wh = pygame.image.load("./img/white"+s+".png")
                     screen.blit(wh, (rect.center[0] - pr_x, rect.center[1] - pr_y))
                 else:
                     wh = pygame.image.load("./img/black"+s+".png")
                     screen.blit(wh, (rect.center[0] - pr_x, rect.center[1] - pr_y))
             elif board[x][y] == 3:
-                if p2==1:
-                    wh = pygame.image.load("./img/bh"+s+".png")
-                    screen.blit(wh, (rect.center[0]+100 , rect.center[1]+100))
+                if p3==1:
+                    wh = pygame.image.load("./img/bh8.png")
+                    screen.blit(wh, (rect.center[0]-45, rect.center[1]-45))
                 else:
                     wh = pygame.image.load("./img/bh"+s+".png")
                     screen.blit(wh, (rect.center[0] -45, rect.center[1] -45))
@@ -83,12 +83,12 @@ def get_valid_moves(board, player,p3):
             if board[x][y] == 0:
                 for dx, dy in [(0, 1), (1, 0), (0, -1), (-1, 0), (1, 1), (-1, 1), (1, -1), (-1, -1)]:
                     nx, ny = x + dx, y + dy
-                    if nx < 0 or nx >= BOARD_SIZE or ny < 0 or ny >= BOARD_SIZE or board[nx][ny] == player:
+                    if nx < 0 or nx >= BOARD_SIZE or ny < 0 or ny >= BOARD_SIZE or board[nx][ny] == player or board[nx][ny] == 3:
                         continue
                     while board[nx][ny] != 0:
                         nx += dx
                         ny += dy
-                        if nx < 0 or nx >= BOARD_SIZE or ny < 0 or ny >= BOARD_SIZE:
+                        if nx < 0 or nx >= BOARD_SIZE or ny < 0 or ny >= BOARD_SIZE or board[nx][ny] == 3:
                             break
                         if board[nx][ny] == player:
                             valid_moves.append((x, y))
@@ -100,9 +100,9 @@ def make_move(board, player, move):
     board[x][y] = player
     for dx, dy in [(0, 1), (1, 0), (0, -1), (-1, 0), (1, 1), (-1, 1), (1, -1), (-1, -1)]:
         nx, ny = x + dx, y + dy
-        if nx < 0 or nx >= BOARD_SIZE or ny < 0 or ny >= BOARD_SIZE or board[nx][ny] == player:
+        if nx < 0 or nx >= BOARD_SIZE or ny < 0 or ny >= BOARD_SIZE or board[nx][ny] == player or board[nx][ny] == 3:
             continue
-        while board[nx][ny] != 0:
+        while board[nx][ny] != 0 and board[nx][ny] != 3:
             nx += dx
             ny += dy
             if nx < 0 or nx >= BOARD_SIZE or ny < 0 or ny >= BOARD_SIZE:
@@ -113,6 +113,7 @@ def make_move(board, player, move):
                     ny -= dy
                     if nx == x and ny == y:
                         break
+
                     board[nx][ny] = player
                 break
 
@@ -166,9 +167,10 @@ def main(p1,p2,p3,p4,p5):
 
     black_holes_coord = []
     if p5==1:
-        for x in range(random.randint(1,BOARD_SIZE-1)):
-            black_holes_coord.append((random.randint(0,BOARD_SIZE-1),random.randint(0,BOARD_SIZE-1)))
-        black_holes_coord.append((5,6))
+        for x in range(random.randint(1,BOARD_SIZE//2)):
+            black_holes_coord.append((random.randint(0,BOARD_SIZE//2-2),random.randint(0,BOARD_SIZE//2-1)))
+        for x in range(random.randint(1,BOARD_SIZE//2)):
+            black_holes_coord.append((random.randint(BOARD_SIZE//2+1,BOARD_SIZE-1),random.randint(0,BOARD_SIZE-1)))
     WINDOW_SIZE = (BOARD_SIZE * SQUARE_SIZE, BOARD_SIZE * SQUARE_SIZE)
     BLACK = (0, 0, 0)
     WHITE = (255, 255, 255)
@@ -245,16 +247,17 @@ def main(p1,p2,p3,p4,p5):
     # Draw game over screen
     draw_board(board,p2,p3)
     font = pygame.font.SysFont(None, 50)
-    if black_score > white_score and p1==1:
+    if black_score > white_score and (p2==1 or p2==None):
         text = font.render("Black wins!", True, BLACK)
-    elif black_score < white_score and p1==1:
+    if black_score < white_score and (p2==1 or p2==None):
         text = font.render("White wins!", True, BLACK)
-    if black_score < white_score and p1==0:
+    if black_score < white_score and p2==0:
         text = font.render("Black wins!", True, BLACK)
-    elif black_score > white_score and p1==0:
+    if black_score > white_score and p2==0:
         text = font.render("White wins!", True, BLACK)
-    else:
+    if(black_score==white_score):
         text = font.render("Tie game!", True, BLACK)
+
     screen.blit(text, (WINDOW_SIZE[0] // 2 - text.get_width() // 2, WINDOW_SIZE[1] // 2 - text.get_height() // 2))
     pygame.display.flip()
 
