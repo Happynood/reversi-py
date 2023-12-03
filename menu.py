@@ -14,7 +14,7 @@ pygame.init()
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Reversi Menu")
 screen.blit(pygame.image.load("./img/menu3.png"), (0, 0))
-font = pygame.font.SysFont("Arial", 70)
+font = pygame.font.SysFont("Unispace", 70)
 btn1 = Button(
     # Mandatory Parameters
     screen,  # Surface to place button on
@@ -28,7 +28,8 @@ btn1 = Button(
     text='Start Game',
     pressedColour=(140, 71, 67),  # Colour of button when being clicked
     radius=20,  # Radius of border corners (leave empty for not curved)
-    onClick=lambda: start()  # Function to call when clicked on
+    onClick=lambda: start(),  # Function to call when clicked on
+font = pygame.font.SysFont("Unispace", 30)
 )
 
 btn2= Button(
@@ -44,7 +45,8 @@ btn2= Button(
     text='Quit',
     pressedColour=(140, 71, 67),  # Colour of button when being clicked
     radius=20,  # Radius of border corners (leave empty for not curved)
-    onClick=lambda: sys.exit()  # Function to call when clicked on
+    onClick=lambda: sys.exit(),  # Function to call when clicked on
+font = pygame.font.SysFont("Unispace", 30)
 )
 
 dropdown1 = Dropdown(
@@ -59,7 +61,7 @@ dropdown1 = Dropdown(
     direction='down',
     textHAlign='centre',
     fontSize=30,
-    font = pygame.font.SysFont("Arial", 30)
+    font = pygame.font.SysFont("Unispace", 30)
 )
 
 dropdown2 = Dropdown(
@@ -74,7 +76,7 @@ dropdown2 = Dropdown(
     direction='down',
     textHAlign='centre',
     fontSize=30,
-    font = pygame.font.SysFont("Arial", 30)
+    font = pygame.font.SysFont("Unispace", 30)
 )
 
 dropdown3 = Dropdown(
@@ -89,7 +91,7 @@ dropdown3 = Dropdown(
     direction='down',
     textHAlign='centre',
     fontSize=30,
-    font = pygame.font.SysFont("Arial", 25)
+    font = pygame.font.SysFont("Unispace", 25)
 )
 
 def start():
