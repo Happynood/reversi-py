@@ -119,19 +119,30 @@ def get_score(board):
                 white_score += 1
     return black_score, white_score
 
-def ai_move(board, player,p3):
+def ai_move(board, player,p1,p3):
     valid_moves = get_valid_moves(board, player,p3)
     if not valid_moves:
         return None
     best_move = None
-    best_score = -1
-    for move in valid_moves:
-        new_board = copy.deepcopy(board)
-        make_move(new_board, player, move)
-        score = get_score(new_board)[player - 1]
-        if score > best_score:
-            best_move = move
-            best_score = score
+
+    if p1==1:
+        best_score = -1
+        for move in valid_moves:
+            new_board = copy.deepcopy(board)
+            make_move(new_board, player, move)
+            score = get_score(new_board)[player - 1]
+            if score > best_score:
+                best_move = move
+                best_score = score
+    else:
+        best_score = 100
+        for move in valid_moves:
+            new_board = copy.deepcopy(board)
+            make_move(new_board, player, move)
+            score = get_score(new_board)[player - 1]
+            if score < best_score:
+                best_move = move
+                best_score = score
     return best_move
 
 # Define main function
@@ -179,7 +190,7 @@ def main(p1,p2,p3):
                     make_move(board, player, (x, y))
                     player = 3 - player
             if player == 2:
-                move = ai_move(board, player,p3)
+                move = ai_move(board, player,p1,p3)
                 if move is not None:
                     make_move(board, player, move)
                     player = 3 - player
