@@ -4,8 +4,9 @@ import random
 import copy
 from pygame_widgets.button import Button
 import pygame_widgets
-SQUARE_SIZE = 100
+
 # Define constants
+SQUARE_SIZE = 100
 BOARD_SIZE = 8
 WINDOW_SIZE = (BOARD_SIZE * SQUARE_SIZE, BOARD_SIZE * SQUARE_SIZE)
 BLACK = (0, 0, 0)
@@ -22,62 +23,81 @@ pygame.display.set_caption("Reversi")
 screen.blit(pygame.image.load("./img/game1.png"), (0, 0))
 
 # Define helper functions
-def draw_board(board,p2,p3):
-    if p3==1:
+def draw_board(board, p2, p3):
+    """
+    Draw the game board on the screen.
+
+    Parameters:
+        board (list): The game board.
+        p2 (int): Player 2 indicator.
+        p3 (int): Player 3 indicator.
+    """
+    # Define constants based on p3 value
+    if p3 == 1:
         SQUARE_SIZE = 100
-        # Define constants
         BOARD_SIZE = 8
     else:
         SQUARE_SIZE = 80
-        # Define constants
         BOARD_SIZE = 10
+
+    # Load game background image
     screen.blit(pygame.image.load("./img/game.png"), (0, 0))
+
+    # Iterate through the board
     for x in range(BOARD_SIZE):
         for y in range(BOARD_SIZE):
+            # Create rectangle for each square
             rect = pygame.Rect(x * SQUARE_SIZE, y * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE)
-            s = str()
-            pr_x = int()
-            pr_y = int()
-            if p3==1:
+
+            # Set values based on p3
+            if p3 == 1:
                 s = '10'
                 pr_x, pr_y = 50, 50
-
             else:
                 s = '8'
                 pr_x, pr_y = 40, 40
+
+            # Check the value of the cell and draw the appropriate image
             if board[x][y] == 1:
-                if p2==1:
-                    wh = pygame.image.load("./img/black"+s+".png")
-                    screen.blit(wh,(rect.center[0]-pr_x,rect.center[1]-pr_y))
+                if p2 == 1:
+                    wh = pygame.image.load("./img/black" + s + ".png")
+                    screen.blit(wh, (rect.center[0] - pr_x, rect.center[1] - pr_y))
                 else:
-                    wh = pygame.image.load("./img/white"+s+".png")
+                    wh = pygame.image.load("./img/white" + s + ".png")
                     screen.blit(wh, (rect.center[0] - pr_x, rect.center[1] - pr_y))
             elif board[x][y] == 2:
-                if p2==1:
-                    wh = pygame.image.load("./img/white"+s+".png")
+                if p2 == 1:
+                    wh = pygame.image.load("./img/white" + s + ".png")
                     screen.blit(wh, (rect.center[0] - pr_x, rect.center[1] - pr_y))
                 else:
-                    wh = pygame.image.load("./img/black"+s+".png")
+                    wh = pygame.image.load("./img/black" + s + ".png")
                     screen.blit(wh, (rect.center[0] - pr_x, rect.center[1] - pr_y))
             elif board[x][y] == 3:
-                if p3==1:
+                if p3 == 1:
                     wh = pygame.image.load("./img/bh8.png")
-                    screen.blit(wh, (rect.center[0]-45, rect.center[1]-45))
+                    screen.blit(wh, (rect.center[0] - 45, rect.center[1] - 45))
                 else:
-                    wh = pygame.image.load("./img/bh"+s+".png")
-                    screen.blit(wh, (rect.center[0] -45, rect.center[1] -45))
+                    wh = pygame.image.load("./img/bh" + s + ".png")
+                    screen.blit(wh, (rect.center[0] - 45, rect.center[1] - 45))
+def get_valid_moves(board, player, p3):
+    """
+    Get the valid moves for a player on the board.
 
+    Args:
+        board (list): The game board.
+        player (int): The player number.
+        p3 (int): A flag indicating the board size.
 
+    Returns:
+        list: A list of valid moves.
 
-def get_valid_moves(board, player,p3):
-    if p3==1:
-        SQUARE_SIZE = 100
-        # Define constants
-        BOARD_SIZE = 8
-    else:
-        SQUARE_SIZE = 80
-        # Define constants
-        BOARD_SIZE = 10
+    """
+    # Set the square size based on the value of p3
+    SQUARE_SIZE = 100 if p3 == 1 else 80
+
+    # Set the board size based on the value of p3
+    BOARD_SIZE = 8 if p3 == 1 else 10
+
     valid_moves = []
     for x in range(BOARD_SIZE):
         for y in range(BOARD_SIZE):
@@ -96,18 +116,45 @@ def get_valid_moves(board, player,p3):
                             break
     return valid_moves
 
+
 def make_move(board, player, move):
+    """
+    Makes a move on the board for the given player at the specified position.
+
+    Args:
+        board (list): The game board.
+        player (int): The player making the move.
+        move (tuple): The position to make the move at.
+
+    Returns:
+        None
+    """
+    BOARD_SIZE = len(board)
     x, y = move
+
+    # Set the player's move on the board
     board[x][y] = player
-    for dx, dy in [(0, 1), (1, 0), (0, -1), (-1, 0), (1, 1), (-1, 1), (1, -1), (-1, -1)]:
+
+    # Define the possible directions to check for flipping
+    directions = [(0, 1), (1, 0), (0, -1), (-1, 0), (1, 1), (-1, 1), (1, -1), (-1, -1)]
+
+    for dx, dy in directions:
         nx, ny = x + dx, y + dy
+
+        # Check if the next position is within the board boundaries
         if nx < 0 or nx >= BOARD_SIZE or ny < 0 or ny >= BOARD_SIZE or board[nx][ny] == player or board[nx][ny] == 3:
             continue
+
+        # Start flipping the opponent's pieces
         while board[nx][ny] != 0 and board[nx][ny] != 3:
             nx += dx
             ny += dy
+
+            # Check if the next position is within the board boundaries
             if nx < 0 or nx >= BOARD_SIZE or ny < 0 or ny >= BOARD_SIZE:
                 break
+
+            # Check if a piece of the player is found, start flipping
             if board[nx][ny] == player:
                 while True:
                     nx -= dx
@@ -118,32 +165,65 @@ def make_move(board, player, move):
                     board[nx][ny] = player
                 break
 
-def get_score(board,p2):
+
+def get_score(board, p2):
+    """
+    Calculate the score of each player based on the board state.
+
+    Args:
+        board (list): The game board.
+        p2 (int): The player number.
+
+    Returns:
+        tuple: A tuple containing the score of each player.
+    """
     black_score = 0
     white_score = 0
-    for x in range(BOARD_SIZE):
-        for y in range(BOARD_SIZE):
+
+    # Iterate through each cell in the board
+    for x in range(len(board)):
+        for y in range(len(board[x])):
             if board[x][y] == 1:
                 black_score += 1
             elif board[x][y] == 2:
                 white_score += 1
-    if p2==1:
+
+    # Swap the scores if p2 is 1
+    if p2 == 1:
         return black_score, white_score
     return white_score, black_score
 
 
-def ai_move(board, player,p1,p2,p3):
-    valid_moves = get_valid_moves(board, player,p3)
+import copy
+
+
+def ai_move(board, player, p1, p2, p3):
+    """
+    Function to calculate the best move for an AI player in a game.
+
+    Args:
+        board (list): The game board.
+        player (int): The AI player.
+        p1 (int): A parameter that determines the scoring strategy.
+        p2 (int): A parameter used in the scoring calculation.
+        p3 (int): A parameter used in the scoring calculation.
+
+    Returns:
+        int: The best move for the AI player.
+    """
+    valid_moves = get_valid_moves(board, player, p3)
+
     if not valid_moves:
         return None
+
     best_move = None
 
-    if p1==1:
+    if p1 == 1:
         best_score = -1
         for move in valid_moves:
             new_board = copy.deepcopy(board)
             make_move(new_board, player, move)
-            score = get_score(new_board)[player - 1]
+            score = get_score(new_board, p2)[player - 1]
             if score > best_score:
                 best_move = move
                 best_score = score
@@ -152,29 +232,46 @@ def ai_move(board, player,p1,p2,p3):
         for move in valid_moves:
             new_board = copy.deepcopy(board)
             make_move(new_board, player, move)
-            score = get_score(new_board,p2)[player - 1]
+            score = get_score(new_board, p2)[player - 1]
             if score < best_score:
                 best_move = move
                 best_score = score
+
     return best_move
 
-# Define main function
 def main(p1,p2,p3,p4,p5,name1,name2):
+    """
+        This function is the main game loop for Reversi.
+
+        Parameters:
+        - p1: An integer representing the AI difficulty level.
+        - p2: An integer representing the score display option.
+        - p3: An integer representing the board size option.
+        - p4: An integer representing the player turn option.
+        - p5: An integer representing the black holes option.
+        - name1: A string representing player 1's name.
+        - name2: A string representing player 2's name.
+
+        Returns:
+        - True if the user chooses to return to the menu, otherwise None.
+        """
+    # Set square size and board size based on input
     if p3==1:
         SQUARE_SIZE = 100
-        # Define constants
         BOARD_SIZE = 8
     else:
         SQUARE_SIZE = 80
-        # Define constants
         BOARD_SIZE = 10
 
+    # Generate random black hole coordinates if option is enabled
     black_holes_coord = []
     if p5==1:
         for x in range(random.randint(1,BOARD_SIZE//2)):
             black_holes_coord.append((random.randint(0,BOARD_SIZE//2-2),random.randint(0,BOARD_SIZE//2-1)))
         for x in range(random.randint(1,BOARD_SIZE//2)):
             black_holes_coord.append((random.randint(BOARD_SIZE//2+1,BOARD_SIZE-1),random.randint(0,BOARD_SIZE-1)))
+
+    # Set window size and color constants
     WINDOW_SIZE = (BOARD_SIZE * SQUARE_SIZE, BOARD_SIZE * SQUARE_SIZE)
     BLACK = (0, 0, 0)
     WHITE = (255, 255, 255)
@@ -188,6 +285,7 @@ def main(p1,p2,p3,p4,p5,name1,name2):
     screen = pygame.display.set_mode(WINDOW_SIZE)
     pygame.display.set_caption("Reversi")
     screen.blit(pygame.image.load("./img/game1.png"), (0, 0))
+
     # Initialize game state
     board = [[0] * BOARD_SIZE for _ in range(BOARD_SIZE)]
     board[len(board)//2-1][len(board)//2-1] = board[len(board)//2][len(board)//2] = 1
