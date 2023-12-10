@@ -1,0 +1,210 @@
+\hypertarget{namespacemain}{}\doxysection{main Namespace Reference}
+\label{namespacemain}\index{main@{main}}
+
+
+Main Functions.  
+
+
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{namespacemain_a223c61ea1188d4f771a2fb1d6a775c93}{ai\+\_\+move}} (board, player, p1, p2, p3)
+\item 
+def \mbox{\hyperlink{namespacemain_aa37616d15c4d8443632b9c1a36bd42b0}{draw\+\_\+board}} (board, p2, p3)
+\item 
+def \mbox{\hyperlink{namespacemain_a04c5c1e7e117f2b8e311e4e4acb12948}{get\+\_\+score}} (board, p2)
+\item 
+def \mbox{\hyperlink{namespacemain_a28d8def47744ac59bbf737053ae47898}{get\+\_\+valid\+\_\+moves}} (board, player, p3)
+\item 
+def \mbox{\hyperlink{namespacemain_aa50c3ae8cc4ff7f1b6fc718bc0be0697}{main}} (p1, p2, p3, p4, p5, name1, name2)
+\item 
+def \mbox{\hyperlink{namespacemain_ab1f9be69f9c67126937325b5025723a7}{make\+\_\+move}} (board, player, move)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+tuple \mbox{\hyperlink{namespacemain_a94f1bbc95586661d10e60ec5653c709d}{BLACK}} = (0, 0, 0)
+\item 
+tuple \mbox{\hyperlink{namespacemain_a28f727e809bd0b2cc011571a5811fa0b}{BLUE}} = (0, 0, 200)
+\item 
+int \mbox{\hyperlink{namespacemain_ae86513f66af0b3b44e638c5a16e769f0}{BOARD\+\_\+\+SIZE}} = 8
+\item 
+tuple \mbox{\hyperlink{namespacemain_a32d982b454644d291d9571a3a6735407}{GREEN}} = (0, 200, 0)
+\item 
+tuple \mbox{\hyperlink{namespacemain_aec13ec7513997fbc2df8637efd3130a5}{RED}} = (200, 0, 0)
+\item 
+\mbox{\hyperlink{namespacemain_a72bba37476e63c27f023823f17619987}{screen}} = pygame.\+display.\+set\+\_\+mode(\mbox{\hyperlink{namespacemain_a4876e0238eeee1c795d508fd86aeb5f6}{WINDOW\+\_\+\+SIZE}})
+\item 
+int \mbox{\hyperlink{namespacemain_aa07f52bc1fee5750a34c1c9aa4c19c33}{SQUARE\+\_\+\+SIZE}} = 100
+\item 
+tuple \mbox{\hyperlink{namespacemain_aa0a8e412645d58d87218f1659f5b8d4e}{WHITE}} = (255, 255, 255)
+\item 
+tuple \mbox{\hyperlink{namespacemain_a4876e0238eeee1c795d508fd86aeb5f6}{WINDOW\+\_\+\+SIZE}} = (\mbox{\hyperlink{namespacemain_ae86513f66af0b3b44e638c5a16e769f0}{BOARD\+\_\+\+SIZE}} $\ast$ \mbox{\hyperlink{namespacemain_aa07f52bc1fee5750a34c1c9aa4c19c33}{SQUARE\+\_\+\+SIZE}}, \mbox{\hyperlink{namespacemain_ae86513f66af0b3b44e638c5a16e769f0}{BOARD\+\_\+\+SIZE}} $\ast$ \mbox{\hyperlink{namespacemain_aa07f52bc1fee5750a34c1c9aa4c19c33}{SQUARE\+\_\+\+SIZE}})
+\item 
+tuple \mbox{\hyperlink{namespacemain_a308c1e6c555345569b7eb5170809c2ac}{YELLOW}} = (255, 255, 0)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Main Functions. 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{namespacemain_a223c61ea1188d4f771a2fb1d6a775c93}\label{namespacemain_a223c61ea1188d4f771a2fb1d6a775c93}} 
+\index{main@{main}!ai\_move@{ai\_move}}
+\index{ai\_move@{ai\_move}!main@{main}}
+\doxysubsubsection{\texorpdfstring{ai\_move()}{ai\_move()}}
+{\footnotesize\ttfamily def ai\+\_\+move (\begin{DoxyParamCaption}\item[{}]{board,  }\item[{}]{player,  }\item[{}]{p1,  }\item[{}]{p2,  }\item[{}]{p3 }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Function to calculate the best move for an AI player in a game.
+
+Args:
+    board (list): The game board.
+    player (int): The AI player.
+    p1 (int): A parameter that determines the scoring strategy.
+    p2 (int): A parameter used in the scoring calculation.
+    p3 (int): A parameter used in the scoring calculation.
+
+Returns:
+    int: The best move for the AI player.
+\end{DoxyVerb}
+ \mbox{\Hypertarget{namespacemain_aa37616d15c4d8443632b9c1a36bd42b0}\label{namespacemain_aa37616d15c4d8443632b9c1a36bd42b0}} 
+\index{main@{main}!draw\_board@{draw\_board}}
+\index{draw\_board@{draw\_board}!main@{main}}
+\doxysubsubsection{\texorpdfstring{draw\_board()}{draw\_board()}}
+{\footnotesize\ttfamily def draw\+\_\+board (\begin{DoxyParamCaption}\item[{}]{board,  }\item[{}]{p2,  }\item[{}]{p3 }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Draw the game board on the screen.
+
+Parameters:
+    board (list): The game board.
+    p2 (int): Player 2 indicator.
+    p3 (int): Player 3 indicator.
+\end{DoxyVerb}
+ \mbox{\Hypertarget{namespacemain_a04c5c1e7e117f2b8e311e4e4acb12948}\label{namespacemain_a04c5c1e7e117f2b8e311e4e4acb12948}} 
+\index{main@{main}!get\_score@{get\_score}}
+\index{get\_score@{get\_score}!main@{main}}
+\doxysubsubsection{\texorpdfstring{get\_score()}{get\_score()}}
+{\footnotesize\ttfamily def get\+\_\+score (\begin{DoxyParamCaption}\item[{}]{board,  }\item[{}]{p2 }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Calculate the score of each player based on the board state.
+
+Args:
+    board (list): The game board.
+    p2 (int): The player number.
+
+Returns:
+    tuple: A tuple containing the score of each player.
+\end{DoxyVerb}
+ \mbox{\Hypertarget{namespacemain_a28d8def47744ac59bbf737053ae47898}\label{namespacemain_a28d8def47744ac59bbf737053ae47898}} 
+\index{main@{main}!get\_valid\_moves@{get\_valid\_moves}}
+\index{get\_valid\_moves@{get\_valid\_moves}!main@{main}}
+\doxysubsubsection{\texorpdfstring{get\_valid\_moves()}{get\_valid\_moves()}}
+{\footnotesize\ttfamily def get\+\_\+valid\+\_\+moves (\begin{DoxyParamCaption}\item[{}]{board,  }\item[{}]{player,  }\item[{}]{p3 }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Get the valid moves for a player on the board.
+
+Args:
+    board (list): The game board.
+    player (int): The player number.
+    p3 (int): A flag indicating the board size.
+
+Returns:
+    list: A list of valid moves.\end{DoxyVerb}
+ \mbox{\Hypertarget{namespacemain_aa50c3ae8cc4ff7f1b6fc718bc0be0697}\label{namespacemain_aa50c3ae8cc4ff7f1b6fc718bc0be0697}} 
+\index{main@{main}!main@{main}}
+\index{main@{main}!main@{main}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily def main (\begin{DoxyParamCaption}\item[{}]{p1,  }\item[{}]{p2,  }\item[{}]{p3,  }\item[{}]{p4,  }\item[{}]{p5,  }\item[{}]{name1,  }\item[{}]{name2 }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}    This function is the main game loop for Reversi.
+
+    Parameters:
+    - p1: An integer representing the AI difficulty level.
+    - p2: An integer representing the score display option.
+    - p3: An integer representing the board size option.
+    - p4: An integer representing the player turn option.
+    - p5: An integer representing the black holes option.
+    - name1: A string representing player 1's name.
+    - name2: A string representing player 2's name.
+
+    Returns:
+    - True if the user chooses to return to the menu, otherwise None.\end{DoxyVerb}
+ \mbox{\Hypertarget{namespacemain_ab1f9be69f9c67126937325b5025723a7}\label{namespacemain_ab1f9be69f9c67126937325b5025723a7}} 
+\index{main@{main}!make\_move@{make\_move}}
+\index{make\_move@{make\_move}!main@{main}}
+\doxysubsubsection{\texorpdfstring{make\_move()}{make\_move()}}
+{\footnotesize\ttfamily def make\+\_\+move (\begin{DoxyParamCaption}\item[{}]{board,  }\item[{}]{player,  }\item[{}]{move }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Makes a move on the board for the given player at the specified position.
+
+Args:
+    board (list): The game board.
+    player (int): The player making the move.
+    move (tuple): The position to make the move at.
+
+Returns:
+    None
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{namespacemain_a94f1bbc95586661d10e60ec5653c709d}\label{namespacemain_a94f1bbc95586661d10e60ec5653c709d}} 
+\index{main@{main}!BLACK@{BLACK}}
+\index{BLACK@{BLACK}!main@{main}}
+\doxysubsubsection{\texorpdfstring{BLACK}{BLACK}}
+{\footnotesize\ttfamily tuple BLACK = (0, 0, 0)}
+
+\mbox{\Hypertarget{namespacemain_a28f727e809bd0b2cc011571a5811fa0b}\label{namespacemain_a28f727e809bd0b2cc011571a5811fa0b}} 
+\index{main@{main}!BLUE@{BLUE}}
+\index{BLUE@{BLUE}!main@{main}}
+\doxysubsubsection{\texorpdfstring{BLUE}{BLUE}}
+{\footnotesize\ttfamily tuple BLUE = (0, 0, 200)}
+
+\mbox{\Hypertarget{namespacemain_ae86513f66af0b3b44e638c5a16e769f0}\label{namespacemain_ae86513f66af0b3b44e638c5a16e769f0}} 
+\index{main@{main}!BOARD\_SIZE@{BOARD\_SIZE}}
+\index{BOARD\_SIZE@{BOARD\_SIZE}!main@{main}}
+\doxysubsubsection{\texorpdfstring{BOARD\_SIZE}{BOARD\_SIZE}}
+{\footnotesize\ttfamily int BOARD\+\_\+\+SIZE = 8}
+
+\mbox{\Hypertarget{namespacemain_a32d982b454644d291d9571a3a6735407}\label{namespacemain_a32d982b454644d291d9571a3a6735407}} 
+\index{main@{main}!GREEN@{GREEN}}
+\index{GREEN@{GREEN}!main@{main}}
+\doxysubsubsection{\texorpdfstring{GREEN}{GREEN}}
+{\footnotesize\ttfamily tuple GREEN = (0, 200, 0)}
+
+\mbox{\Hypertarget{namespacemain_aec13ec7513997fbc2df8637efd3130a5}\label{namespacemain_aec13ec7513997fbc2df8637efd3130a5}} 
+\index{main@{main}!RED@{RED}}
+\index{RED@{RED}!main@{main}}
+\doxysubsubsection{\texorpdfstring{RED}{RED}}
+{\footnotesize\ttfamily tuple RED = (200, 0, 0)}
+
+\mbox{\Hypertarget{namespacemain_a72bba37476e63c27f023823f17619987}\label{namespacemain_a72bba37476e63c27f023823f17619987}} 
+\index{main@{main}!screen@{screen}}
+\index{screen@{screen}!main@{main}}
+\doxysubsubsection{\texorpdfstring{screen}{screen}}
+{\footnotesize\ttfamily screen = pygame.\+display.\+set\+\_\+mode(\mbox{\hyperlink{namespacemain_a4876e0238eeee1c795d508fd86aeb5f6}{WINDOW\+\_\+\+SIZE}})}
+
+\mbox{\Hypertarget{namespacemain_aa07f52bc1fee5750a34c1c9aa4c19c33}\label{namespacemain_aa07f52bc1fee5750a34c1c9aa4c19c33}} 
+\index{main@{main}!SQUARE\_SIZE@{SQUARE\_SIZE}}
+\index{SQUARE\_SIZE@{SQUARE\_SIZE}!main@{main}}
+\doxysubsubsection{\texorpdfstring{SQUARE\_SIZE}{SQUARE\_SIZE}}
+{\footnotesize\ttfamily int SQUARE\+\_\+\+SIZE = 100}
+
+\mbox{\Hypertarget{namespacemain_aa0a8e412645d58d87218f1659f5b8d4e}\label{namespacemain_aa0a8e412645d58d87218f1659f5b8d4e}} 
+\index{main@{main}!WHITE@{WHITE}}
+\index{WHITE@{WHITE}!main@{main}}
+\doxysubsubsection{\texorpdfstring{WHITE}{WHITE}}
+{\footnotesize\ttfamily tuple WHITE = (255, 255, 255)}
+
+\mbox{\Hypertarget{namespacemain_a4876e0238eeee1c795d508fd86aeb5f6}\label{namespacemain_a4876e0238eeee1c795d508fd86aeb5f6}} 
+\index{main@{main}!WINDOW\_SIZE@{WINDOW\_SIZE}}
+\index{WINDOW\_SIZE@{WINDOW\_SIZE}!main@{main}}
+\doxysubsubsection{\texorpdfstring{WINDOW\_SIZE}{WINDOW\_SIZE}}
+{\footnotesize\ttfamily tuple WINDOW\+\_\+\+SIZE = (\mbox{\hyperlink{namespacemain_ae86513f66af0b3b44e638c5a16e769f0}{BOARD\+\_\+\+SIZE}} $\ast$ \mbox{\hyperlink{namespacemain_aa07f52bc1fee5750a34c1c9aa4c19c33}{SQUARE\+\_\+\+SIZE}}, \mbox{\hyperlink{namespacemain_ae86513f66af0b3b44e638c5a16e769f0}{BOARD\+\_\+\+SIZE}} $\ast$ \mbox{\hyperlink{namespacemain_aa07f52bc1fee5750a34c1c9aa4c19c33}{SQUARE\+\_\+\+SIZE}})}
+
+\mbox{\Hypertarget{namespacemain_a308c1e6c555345569b7eb5170809c2ac}\label{namespacemain_a308c1e6c555345569b7eb5170809c2ac}} 
+\index{main@{main}!YELLOW@{YELLOW}}
+\index{YELLOW@{YELLOW}!main@{main}}
+\doxysubsubsection{\texorpdfstring{YELLOW}{YELLOW}}
+{\footnotesize\ttfamily tuple YELLOW = (255, 255, 0)}
+

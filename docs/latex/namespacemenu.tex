@@ -1,0 +1,323 @@
+\hypertarget{namespacemenu}{}\doxysection{menu Namespace Reference}
+\label{namespacemenu}\index{menu@{menu}}
+
+
+Menu code.  
+
+
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{namespacemenu_a143cf4c10e184bf693c809fa734750ab}{draw\+\_\+menu}} ()
+\item 
+def \mbox{\hyperlink{namespacemenu_a5ee6cf41154d2e71f8ac69ed64a451fe}{start}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+tuple \mbox{\hyperlink{namespacemenu_a562ca4e7cf8c060cbf7b92bcda9cf400}{BACKGROUND\+\_\+\+COLOR}} = (0, 0, 0)
+\item 
+\mbox{\hyperlink{namespacemenu_a48f379499d64d8c1955ccf6bc56bad60}{btn1}}
+\item 
+\mbox{\hyperlink{namespacemenu_af0a8b464a6d26e5dd2ad3add183de247}{btn2}}
+\item 
+\mbox{\hyperlink{namespacemenu_a11794ff885693de342b55cfe6e27c43d}{dropdown1}}
+\item 
+\mbox{\hyperlink{namespacemenu_a34a699bc7103152cbdcfcc08a2e02b5a}{dropdown2}}
+\item 
+\mbox{\hyperlink{namespacemenu_a87063ee26a46115094a6d6a2ea820e4f}{dropdown3}}
+\item 
+\mbox{\hyperlink{namespacemenu_a69b53c624f4b032a9875abbfc5f01e4a}{dropdown4}}
+\item 
+\mbox{\hyperlink{namespacemenu_a73ead671db460415c247eaf1f9bb63bc}{dropdown5}}
+\item 
+\mbox{\hyperlink{namespacemenu_af18bb9025627467c42857f6b57902a47}{font}} = pygame.\+font.\+Sys\+Font(\char`\"{}Unispace\char`\"{}, 70)
+\item 
+int \mbox{\hyperlink{namespacemenu_a4e81322eb1085aca9cd7c5527f5e4c6b}{HEIGHT}} = 800
+\item 
+\mbox{\hyperlink{namespacemenu_a72bba37476e63c27f023823f17619987}{screen}} = pygame.\+display.\+set\+\_\+mode((\mbox{\hyperlink{namespacemenu_a59c3bba4b17cd5e19f149ea175fa6989}{WIDTH}}, \mbox{\hyperlink{namespacemenu_a4e81322eb1085aca9cd7c5527f5e4c6b}{HEIGHT}}))
+\item 
+\mbox{\hyperlink{namespacemenu_ad4e86016c23ec9343cae7550442765f9}{textbox\+\_\+name1}}
+\item 
+\mbox{\hyperlink{namespacemenu_a4d337b27ef1abe11c1eb53a1ebac9f88}{textbox\+\_\+name2}}
+\item 
+int \mbox{\hyperlink{namespacemenu_a59c3bba4b17cd5e19f149ea175fa6989}{WIDTH}} = 800
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Menu code. 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{namespacemenu_a143cf4c10e184bf693c809fa734750ab}\label{namespacemenu_a143cf4c10e184bf693c809fa734750ab}} 
+\index{menu@{menu}!draw\_menu@{draw\_menu}}
+\index{draw\_menu@{draw\_menu}!menu@{menu}}
+\doxysubsubsection{\texorpdfstring{draw\_menu()}{draw\_menu()}}
+{\footnotesize\ttfamily def draw\+\_\+menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}This function draws a menu on the screen.
+It handles events, clears the screen, loads and displays an image, updates the state of the pygame widgets, and updates the display.\end{DoxyVerb}
+ \mbox{\Hypertarget{namespacemenu_a5ee6cf41154d2e71f8ac69ed64a451fe}\label{namespacemenu_a5ee6cf41154d2e71f8ac69ed64a451fe}} 
+\index{menu@{menu}!start@{start}}
+\index{start@{start}!menu@{menu}}
+\doxysubsubsection{\texorpdfstring{start()}{start()}}
+{\footnotesize\ttfamily def start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}This function starts the program by getting selected values from dropdowns and text from textboxes.
+It then calls the main function with the selected values and text inputs, and performs further actions
+based on the return value of the main function.\end{DoxyVerb}
+ 
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{namespacemenu_a562ca4e7cf8c060cbf7b92bcda9cf400}\label{namespacemenu_a562ca4e7cf8c060cbf7b92bcda9cf400}} 
+\index{menu@{menu}!BACKGROUND\_COLOR@{BACKGROUND\_COLOR}}
+\index{BACKGROUND\_COLOR@{BACKGROUND\_COLOR}!menu@{menu}}
+\doxysubsubsection{\texorpdfstring{BACKGROUND\_COLOR}{BACKGROUND\_COLOR}}
+{\footnotesize\ttfamily tuple BACKGROUND\+\_\+\+COLOR = (0, 0, 0)}
+
+\mbox{\Hypertarget{namespacemenu_a48f379499d64d8c1955ccf6bc56bad60}\label{namespacemenu_a48f379499d64d8c1955ccf6bc56bad60}} 
+\index{menu@{menu}!btn1@{btn1}}
+\index{btn1@{btn1}!menu@{menu}}
+\doxysubsubsection{\texorpdfstring{btn1}{btn1}}
+{\footnotesize\ttfamily btn1}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 =  Button(}
+\DoxyCodeLine{2     screen,  \textcolor{comment}{\# Surface to place button on}}
+\DoxyCodeLine{3     WIDTH // 2 -\/ 75,  \textcolor{comment}{\# X-\/coordinate of top left corner}}
+\DoxyCodeLine{4     HEIGHT // 2 -\/ 150,  \textcolor{comment}{\# Y-\/coordinate of top left corner}}
+\DoxyCodeLine{5     150,  \textcolor{comment}{\# Width}}
+\DoxyCodeLine{6     100,  \textcolor{comment}{\# Height}}
+\DoxyCodeLine{7     text=\textcolor{stringliteral}{'Start Game'},  \textcolor{comment}{\# Text to display}}
+\DoxyCodeLine{8     fontSize=30,  \textcolor{comment}{\# Size of font}}
+\DoxyCodeLine{9     margin=20,  \textcolor{comment}{\# Minimum distance between text/image and edge of button}}
+\DoxyCodeLine{10     inactiveColour=(144, 77, 48),  \textcolor{comment}{\# Colour of button when not being interacted with}}
+\DoxyCodeLine{11     pressedColour=(140, 71, 67),  \textcolor{comment}{\# Colour of button when being clicked}}
+\DoxyCodeLine{12     radius=20,  \textcolor{comment}{\# Radius of border corners (leave empty for not curved)}}
+\DoxyCodeLine{13     onClick=\textcolor{keyword}{lambda}: \mbox{\hyperlink{namespacemenu_a5ee6cf41154d2e71f8ac69ed64a451fe}{start}}(),  \textcolor{comment}{\# Function to call when clicked on}}
+\DoxyCodeLine{14     font=pygame.font.SysFont(\textcolor{stringliteral}{"{}Unispace"{}}, 30)}
+\DoxyCodeLine{15 )}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{namespacemenu_af0a8b464a6d26e5dd2ad3add183de247}\label{namespacemenu_af0a8b464a6d26e5dd2ad3add183de247}} 
+\index{menu@{menu}!btn2@{btn2}}
+\index{btn2@{btn2}!menu@{menu}}
+\doxysubsubsection{\texorpdfstring{btn2}{btn2}}
+{\footnotesize\ttfamily btn2}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 =  Button(}
+\DoxyCodeLine{2     screen,  \textcolor{comment}{\# Surface to place button on}}
+\DoxyCodeLine{3     WIDTH // 2 -\/ 75,  \textcolor{comment}{\# X-\/coordinate of top left corner}}
+\DoxyCodeLine{4     HEIGHT // 2 + 175,  \textcolor{comment}{\# Y-\/coordinate of top left corner}}
+\DoxyCodeLine{5     150,  \textcolor{comment}{\# Width}}
+\DoxyCodeLine{6     100,  \textcolor{comment}{\# Height}}
+\DoxyCodeLine{7     text=\textcolor{stringliteral}{'Quit'},  \textcolor{comment}{\# Text to display}}
+\DoxyCodeLine{8     fontSize=30,  \textcolor{comment}{\# Size of font}}
+\DoxyCodeLine{9     margin=20,  \textcolor{comment}{\# Minimum distance between text/image and edge of button}}
+\DoxyCodeLine{10     inactiveColour=(144, 77, 48),  \textcolor{comment}{\# Colour of button when not being interacted with}}
+\DoxyCodeLine{11     pressedColour=(140, 71, 67),  \textcolor{comment}{\# Colour of button when being clicked}}
+\DoxyCodeLine{12     radius=20,  \textcolor{comment}{\# Radius of border corners (leave empty for not curved)}}
+\DoxyCodeLine{13     onClick=\textcolor{keyword}{lambda}: sys.exit(),  \textcolor{comment}{\# Function to call when clicked on}}
+\DoxyCodeLine{14     font=pygame.font.SysFont(\textcolor{stringliteral}{"{}Unispace"{}}, 30)}
+\DoxyCodeLine{15 )}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{namespacemenu_a11794ff885693de342b55cfe6e27c43d}\label{namespacemenu_a11794ff885693de342b55cfe6e27c43d}} 
+\index{menu@{menu}!dropdown1@{dropdown1}}
+\index{dropdown1@{dropdown1}!menu@{menu}}
+\doxysubsubsection{\texorpdfstring{dropdown1}{dropdown1}}
+{\footnotesize\ttfamily dropdown1}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 =  Dropdown(}
+\DoxyCodeLine{2     screen,  \textcolor{comment}{\# Surface to place dropdown on}}
+\DoxyCodeLine{3     WIDTH // 2 -\/ 250,  \textcolor{comment}{\# X-\/coordinate of top left corner}}
+\DoxyCodeLine{4     HEIGHT // 2 -\/ 150,  \textcolor{comment}{\# Y-\/coordinate of top left corner}}
+\DoxyCodeLine{5     150,  \textcolor{comment}{\# Width}}
+\DoxyCodeLine{6     100,  \textcolor{comment}{\# Height}}
+\DoxyCodeLine{7     name=\textcolor{stringliteral}{'Select mode'},  \textcolor{comment}{\# Dropdown name}}
+\DoxyCodeLine{8     choices=[\textcolor{stringliteral}{'Reversi'}, \textcolor{stringliteral}{'Antireversi'}],  \textcolor{comment}{\# Dropdown choices}}
+\DoxyCodeLine{9     borderRadius=20,  \textcolor{comment}{\# Radius of border corners (leave empty for not curved)}}
+\DoxyCodeLine{10     colour=pygame.Color((144, 77, 48)),  \textcolor{comment}{\# Colour of dropdown}}
+\DoxyCodeLine{11     values=[\textcolor{keyword}{True}, \textcolor{keyword}{False}],  \textcolor{comment}{\# Dropdown values}}
+\DoxyCodeLine{12     direction=\textcolor{stringliteral}{'down'},  \textcolor{comment}{\# Dropdown direction}}
+\DoxyCodeLine{13     textHAlign=\textcolor{stringliteral}{'centre'},  \textcolor{comment}{\# Text alignment}}
+\DoxyCodeLine{14     fontSize=30,  \textcolor{comment}{\# Size of font}}
+\DoxyCodeLine{15     font=pygame.font.SysFont(\textcolor{stringliteral}{"{}Unispace"{}}, 30)}
+\DoxyCodeLine{16 )}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{namespacemenu_a34a699bc7103152cbdcfcc08a2e02b5a}\label{namespacemenu_a34a699bc7103152cbdcfcc08a2e02b5a}} 
+\index{menu@{menu}!dropdown2@{dropdown2}}
+\index{dropdown2@{dropdown2}!menu@{menu}}
+\doxysubsubsection{\texorpdfstring{dropdown2}{dropdown2}}
+{\footnotesize\ttfamily dropdown2}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 =  Dropdown(}
+\DoxyCodeLine{2     screen,  \textcolor{comment}{\# Surface to place dropdown on}}
+\DoxyCodeLine{3     WIDTH // 2 + 100,  \textcolor{comment}{\# X-\/coordinate of top left corner}}
+\DoxyCodeLine{4     HEIGHT // 2 -\/ 150,  \textcolor{comment}{\# Y-\/coordinate of top left corner}}
+\DoxyCodeLine{5     150,  \textcolor{comment}{\# Width}}
+\DoxyCodeLine{6     100,  \textcolor{comment}{\# Height}}
+\DoxyCodeLine{7     name=\textcolor{stringliteral}{'Select color'},  \textcolor{comment}{\# Dropdown name}}
+\DoxyCodeLine{8     choices=[\textcolor{stringliteral}{'Black'}, \textcolor{stringliteral}{'White'}],  \textcolor{comment}{\# Dropdown choices}}
+\DoxyCodeLine{9     borderRadius=20,  \textcolor{comment}{\# Radius of border corners (leave empty for not curved)}}
+\DoxyCodeLine{10     colour=pygame.Color((144, 77, 48)),  \textcolor{comment}{\# Colour of dropdown}}
+\DoxyCodeLine{11     values=[\textcolor{keyword}{True}, \textcolor{keyword}{False}],  \textcolor{comment}{\# Dropdown values}}
+\DoxyCodeLine{12     direction=\textcolor{stringliteral}{'down'},  \textcolor{comment}{\# Dropdown direction}}
+\DoxyCodeLine{13     textHAlign=\textcolor{stringliteral}{'centre'},  \textcolor{comment}{\# Text alignment}}
+\DoxyCodeLine{14     fontSize=30,  \textcolor{comment}{\# Size of font}}
+\DoxyCodeLine{15     font=pygame.font.SysFont(\textcolor{stringliteral}{"{}Unispace"{}}, 30)}
+\DoxyCodeLine{16 )}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{namespacemenu_a87063ee26a46115094a6d6a2ea820e4f}\label{namespacemenu_a87063ee26a46115094a6d6a2ea820e4f}} 
+\index{menu@{menu}!dropdown3@{dropdown3}}
+\index{dropdown3@{dropdown3}!menu@{menu}}
+\doxysubsubsection{\texorpdfstring{dropdown3}{dropdown3}}
+{\footnotesize\ttfamily dropdown3}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 =  Dropdown(}
+\DoxyCodeLine{2     screen,  \textcolor{comment}{\# Surface to place dropdown on}}
+\DoxyCodeLine{3     WIDTH // 2 -\/ 75,  \textcolor{comment}{\# X-\/coordinate of top left corner}}
+\DoxyCodeLine{4     HEIGHT // 2,  \textcolor{comment}{\# Y-\/coordinate of top left corner}}
+\DoxyCodeLine{5     150,  \textcolor{comment}{\# Width}}
+\DoxyCodeLine{6     50,  \textcolor{comment}{\# Height}}
+\DoxyCodeLine{7     name=\textcolor{stringliteral}{'Choose board'},  \textcolor{comment}{\# Dropdown name}}
+\DoxyCodeLine{8     choices=[\textcolor{stringliteral}{'8'}, \textcolor{stringliteral}{'10'}],  \textcolor{comment}{\# Dropdown choices}}
+\DoxyCodeLine{9     borderRadius=20,  \textcolor{comment}{\# Radius of border corners (leave empty for not curved)}}
+\DoxyCodeLine{10     colour=pygame.Color((144, 77, 48)),  \textcolor{comment}{\# Colour of dropdown}}
+\DoxyCodeLine{11     values=[\textcolor{keyword}{True}, \textcolor{keyword}{False}],  \textcolor{comment}{\# Dropdown values}}
+\DoxyCodeLine{12     direction=\textcolor{stringliteral}{'down'},  \textcolor{comment}{\# Dropdown direction}}
+\DoxyCodeLine{13     textHAlign=\textcolor{stringliteral}{'centre'},  \textcolor{comment}{\# Text alignment}}
+\DoxyCodeLine{14     fontSize=30,  \textcolor{comment}{\# Size of font}}
+\DoxyCodeLine{15     font=pygame.font.SysFont(\textcolor{stringliteral}{"{}Unispace"{}}, 25)}
+\DoxyCodeLine{16 )}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{namespacemenu_a69b53c624f4b032a9875abbfc5f01e4a}\label{namespacemenu_a69b53c624f4b032a9875abbfc5f01e4a}} 
+\index{menu@{menu}!dropdown4@{dropdown4}}
+\index{dropdown4@{dropdown4}!menu@{menu}}
+\doxysubsubsection{\texorpdfstring{dropdown4}{dropdown4}}
+{\footnotesize\ttfamily dropdown4}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 =  Dropdown(}
+\DoxyCodeLine{2     screen,  \textcolor{comment}{\# Surface to place dropdown on}}
+\DoxyCodeLine{3     WIDTH // 2 + 100,  \textcolor{comment}{\# X-\/coordinate of top left corner}}
+\DoxyCodeLine{4     HEIGHT // 2,  \textcolor{comment}{\# Y-\/coordinate of top left corner}}
+\DoxyCodeLine{5     150,  \textcolor{comment}{\# Width}}
+\DoxyCodeLine{6     50,  \textcolor{comment}{\# Height}}
+\DoxyCodeLine{7     name=\textcolor{stringliteral}{'Choose players'},  \textcolor{comment}{\# Dropdown name}}
+\DoxyCodeLine{8     choices=[\textcolor{stringliteral}{'1'}, \textcolor{stringliteral}{'2'}],  \textcolor{comment}{\# Dropdown choices}}
+\DoxyCodeLine{9     borderRadius=20,  \textcolor{comment}{\# Radius of border corners (leave empty for not curved)}}
+\DoxyCodeLine{10     colour=pygame.Color((144, 77, 48)),  \textcolor{comment}{\# Colour of dropdown}}
+\DoxyCodeLine{11     values=[\textcolor{keyword}{False}, \textcolor{keyword}{True}],  \textcolor{comment}{\# Dropdown values}}
+\DoxyCodeLine{12     direction=\textcolor{stringliteral}{'down'},  \textcolor{comment}{\# Dropdown direction}}
+\DoxyCodeLine{13     textHAlign=\textcolor{stringliteral}{'centre'},  \textcolor{comment}{\# Text alignment}}
+\DoxyCodeLine{14     fontSize=30)}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{namespacemenu_a73ead671db460415c247eaf1f9bb63bc}\label{namespacemenu_a73ead671db460415c247eaf1f9bb63bc}} 
+\index{menu@{menu}!dropdown5@{dropdown5}}
+\index{dropdown5@{dropdown5}!menu@{menu}}
+\doxysubsubsection{\texorpdfstring{dropdown5}{dropdown5}}
+{\footnotesize\ttfamily dropdown5}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 =  Dropdown(}
+\DoxyCodeLine{2     screen,  \textcolor{comment}{\# Surface to place dropdown on}}
+\DoxyCodeLine{3     WIDTH // 2 -\/ 250,  \textcolor{comment}{\# X-\/coordinate of top left corner}}
+\DoxyCodeLine{4     HEIGHT // 2,  \textcolor{comment}{\# Y-\/coordinate of top left corner}}
+\DoxyCodeLine{5     150,  \textcolor{comment}{\# Width}}
+\DoxyCodeLine{6     50,  \textcolor{comment}{\# Height}}
+\DoxyCodeLine{7     name=\textcolor{stringliteral}{'Black holes'},  \textcolor{comment}{\# Dropdown name}}
+\DoxyCodeLine{8     choices=[\textcolor{stringliteral}{'Yes'}, \textcolor{stringliteral}{'No'}],  \textcolor{comment}{\# Dropdown choices}}
+\DoxyCodeLine{9     borderRadius=20,  \textcolor{comment}{\# Radius of border corners (leave empty for not curved)}}
+\DoxyCodeLine{10     colour=pygame.Color((144, 77, 48)),  \textcolor{comment}{\# Colour of dropdown}}
+\DoxyCodeLine{11     values=[\textcolor{keyword}{True}, \textcolor{keyword}{False}],  \textcolor{comment}{\# Dropdown values}}
+\DoxyCodeLine{12     direction=\textcolor{stringliteral}{'down'},  \textcolor{comment}{\# Dropdown direction}}
+\DoxyCodeLine{13     textHAlign=\textcolor{stringliteral}{'centre'},  \textcolor{comment}{\# Text alignment}}
+\DoxyCodeLine{14     fontSize=30,  \textcolor{comment}{\# Size of font}}
+\DoxyCodeLine{15     font=pygame.font.SysFont(\textcolor{stringliteral}{"{}Unispace"{}}, 25)}
+\DoxyCodeLine{16 )}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{namespacemenu_af18bb9025627467c42857f6b57902a47}\label{namespacemenu_af18bb9025627467c42857f6b57902a47}} 
+\index{menu@{menu}!font@{font}}
+\index{font@{font}!menu@{menu}}
+\doxysubsubsection{\texorpdfstring{font}{font}}
+{\footnotesize\ttfamily font = pygame.\+font.\+Sys\+Font(\char`\"{}Unispace\char`\"{}, 70)}
+
+\mbox{\Hypertarget{namespacemenu_a4e81322eb1085aca9cd7c5527f5e4c6b}\label{namespacemenu_a4e81322eb1085aca9cd7c5527f5e4c6b}} 
+\index{menu@{menu}!HEIGHT@{HEIGHT}}
+\index{HEIGHT@{HEIGHT}!menu@{menu}}
+\doxysubsubsection{\texorpdfstring{HEIGHT}{HEIGHT}}
+{\footnotesize\ttfamily int HEIGHT = 800}
+
+\mbox{\Hypertarget{namespacemenu_a72bba37476e63c27f023823f17619987}\label{namespacemenu_a72bba37476e63c27f023823f17619987}} 
+\index{menu@{menu}!screen@{screen}}
+\index{screen@{screen}!menu@{menu}}
+\doxysubsubsection{\texorpdfstring{screen}{screen}}
+{\footnotesize\ttfamily screen = pygame.\+display.\+set\+\_\+mode((\mbox{\hyperlink{namespacemenu_a59c3bba4b17cd5e19f149ea175fa6989}{WIDTH}}, \mbox{\hyperlink{namespacemenu_a4e81322eb1085aca9cd7c5527f5e4c6b}{HEIGHT}}))}
+
+\mbox{\Hypertarget{namespacemenu_ad4e86016c23ec9343cae7550442765f9}\label{namespacemenu_ad4e86016c23ec9343cae7550442765f9}} 
+\index{menu@{menu}!textbox\_name1@{textbox\_name1}}
+\index{textbox\_name1@{textbox\_name1}!menu@{menu}}
+\doxysubsubsection{\texorpdfstring{textbox\_name1}{textbox\_name1}}
+{\footnotesize\ttfamily textbox\+\_\+name1}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 =  TextBox(}
+\DoxyCodeLine{2     screen,  \textcolor{comment}{\# Surface to place textbox on}}
+\DoxyCodeLine{3     WIDTH // 2 -\/ 250,  \textcolor{comment}{\# X-\/coordinate of top left corner}}
+\DoxyCodeLine{4     HEIGHT // 2 + 100,  \textcolor{comment}{\# Y-\/coordinate of top left corner}}
+\DoxyCodeLine{5     150,  \textcolor{comment}{\# Width}}
+\DoxyCodeLine{6     50,  \textcolor{comment}{\# Height}}
+\DoxyCodeLine{7     fontSize=30,  \textcolor{comment}{\# Size of font}}
+\DoxyCodeLine{8     borderColour=(144, 77, 48),  \textcolor{comment}{\# Colour of border}}
+\DoxyCodeLine{9     textColour=(0, 0, 0),  \textcolor{comment}{\# Colour of text}}
+\DoxyCodeLine{10     radius=20,  \textcolor{comment}{\# Radius of border corners}}
+\DoxyCodeLine{11     borderThickness=5  \textcolor{comment}{\# Thickness of border}}
+\DoxyCodeLine{12 )}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{namespacemenu_a4d337b27ef1abe11c1eb53a1ebac9f88}\label{namespacemenu_a4d337b27ef1abe11c1eb53a1ebac9f88}} 
+\index{menu@{menu}!textbox\_name2@{textbox\_name2}}
+\index{textbox\_name2@{textbox\_name2}!menu@{menu}}
+\doxysubsubsection{\texorpdfstring{textbox\_name2}{textbox\_name2}}
+{\footnotesize\ttfamily textbox\+\_\+name2}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 =  TextBox(}
+\DoxyCodeLine{2     screen,  \textcolor{comment}{\# Surface to place textbox on}}
+\DoxyCodeLine{3     WIDTH // 2 + 100,  \textcolor{comment}{\# X-\/coordinate of top left corner}}
+\DoxyCodeLine{4     HEIGHT // 2 + 100,  \textcolor{comment}{\# Y-\/coordinate of top left corner}}
+\DoxyCodeLine{5     150,  \textcolor{comment}{\# Width}}
+\DoxyCodeLine{6     50,  \textcolor{comment}{\# Height}}
+\DoxyCodeLine{7     fontSize=30,  \textcolor{comment}{\# Size of font}}
+\DoxyCodeLine{8     borderColour=(144, 77, 48),  \textcolor{comment}{\# Colour of border}}
+\DoxyCodeLine{9     textColour=(0, 0, 0),  \textcolor{comment}{\# Colour of text}}
+\DoxyCodeLine{10     radius=20,  \textcolor{comment}{\# Radius of border corners}}
+\DoxyCodeLine{11     borderThickness=5  \textcolor{comment}{\# Thickness of border}}
+\DoxyCodeLine{12 )}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{namespacemenu_a59c3bba4b17cd5e19f149ea175fa6989}\label{namespacemenu_a59c3bba4b17cd5e19f149ea175fa6989}} 
+\index{menu@{menu}!WIDTH@{WIDTH}}
+\index{WIDTH@{WIDTH}!menu@{menu}}
+\doxysubsubsection{\texorpdfstring{WIDTH}{WIDTH}}
+{\footnotesize\ttfamily int WIDTH = 800}
+
