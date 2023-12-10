@@ -36,6 +36,8 @@ Reversi is a classic two-player board game that has been around for decades.
 - Exit or Restart buttons
 
 Image files in */img*
+
 Docs files in */docs* (to open the documentation, run */docs/html/index.html*)
+
 *Copyright (c) 2020 Sanya Workshop.  All rights reserved.*
 
