@@ -39,5 +39,5 @@ Image files in */img*
 
 Docs files in */docs* (to open the documentation, run */docs/html/index.html*)
 
-*Copyright (c) 2020 Sanya Workshop.  All rights reserved.*
+*Copyright (c) 2023 Sanya Workshop.  All rights reserved.*
 
